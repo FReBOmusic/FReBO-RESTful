@@ -56,7 +56,7 @@ class User(db.Model):
 
         try:
             id, user, passwd, session_count = serializer.loads(session_token)
-            user = cls.query.filter_by(id=id, username=user, password=str.encode(passwd))
+            user = cls.query.filter_by(id=id, username=user, password=str.encode(passwd), session_count=session_count)
         except BadSignature:
             return None
 
